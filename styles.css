@@ -1326,6 +1326,94 @@ textarea:focus-visible {
 
 
   
+/* =========================================================
+   MOBILE MENU LAYERING FIX
+   Keeps all page content behind the open navigation.
+   ========================================================= */
+
+@media (max-width: 760px) {
+  .site-header {
+    z-index: 2000;
+  }
+
+  .menu-toggle {
+    position: relative;
+    z-index: 2003;
+  }
+
+  .navigation {
+    position: fixed !important;
+    inset: 0 !important;
+
+    width: 100% !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    max-height: 100dvh;
+
+    display: flex !important;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+
+    overflow-y: auto;
+    overscroll-behavior: contain;
+
+    padding: 100px 30px 40px !important;
+
+    background: #ffffff !important;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    z-index: 2001;
+    isolation: isolate;
+
+    transform: translateY(-8px);
+    transition:
+      opacity 220ms ease,
+      transform 220ms ease,
+      visibility 220ms ease;
+  }
+
+  .navigation.is-open {
+    background: #ffffff !important;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .navigation > a:not(.nav-cta) {
+    position: relative;
+    z-index: 1;
+    flex-shrink: 0;
+    padding: 17px 0;
+    color: #10243b;
+    background: #ffffff;
+    border-bottom: 1px solid #dce4ec;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 23px;
+    font-weight: 500;
+  }
+
+  .navigation .nav-cta {
+    position: relative;
+    z-index: 1;
+    flex-shrink: 0;
+    margin-top: 24px;
+    padding: 16px;
+    color: #ffffff;
+    background: #10243b;
+    border-color: #10243b;
+    text-align: center;
+  }
+
+  body.menu-open {
+    overflow: hidden;
+    touch-action: none;
+  }
+     }
+
 
   
 
